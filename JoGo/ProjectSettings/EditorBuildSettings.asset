@@ -4,5 +4,17 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/01.Scenes/Cat_Interaction.unity
+    guid: c98c1702ca0959040bbf797f87f083b9
+  - enabled: 1
+    path: Assets/01.Scenes/scMap.unity
+    guid: c4c0d29f3ec1c044c84e80efac1d8a15
+  - enabled: 1
+    path: Assets/01.Scenes/scCatching.unity
+    guid: 2c60cd9600287bd4db728eddb5ebb061
+  - enabled: 1
+    path: Assets/01.Scenes/MyRoom.unity
+    guid: 4750f5b3cc825ec479856abe8f72b9ef
   m_configObjects: {}
