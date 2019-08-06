@@ -979,12 +979,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8384579711872472891, guid: 508c619cbdbfe984999be081e25678cc,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 732c697a802de274e9e45e0ba7407656,
-        type: 3}
     - target: {fileID: 8384579711872472890, guid: 508c619cbdbfe984999be081e25678cc,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -1015,6 +1009,12 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 8384579711872472891, guid: 508c619cbdbfe984999be081e25678cc,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 732c697a802de274e9e45e0ba7407656,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 508c619cbdbfe984999be081e25678cc, type: 3}
 --- !u!1001 &314358727
@@ -2033,12 +2033,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8384579711872472891, guid: 508c619cbdbfe984999be081e25678cc,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: a0581bf9a7adc7f43b8bc18ca051a19e,
-        type: 3}
     - target: {fileID: 8384579711872472890, guid: 508c619cbdbfe984999be081e25678cc,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -2084,6 +2078,12 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 8384579711872472891, guid: 508c619cbdbfe984999be081e25678cc,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a0581bf9a7adc7f43b8bc18ca051a19e,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 508c619cbdbfe984999be081e25678cc, type: 3}
 --- !u!1 &1337811687 stripped
@@ -2379,12 +2379,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8384579711872472891, guid: 508c619cbdbfe984999be081e25678cc,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 84b7df33d92c4584aa49802a67068d53,
-        type: 3}
     - target: {fileID: 8384579711872472890, guid: 508c619cbdbfe984999be081e25678cc,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2401,6 +2395,12 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 8384579711872472891, guid: 508c619cbdbfe984999be081e25678cc,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2c0597ae298529147a83667cb2e03cc1,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 508c619cbdbfe984999be081e25678cc, type: 3}
 --- !u!1 &1449707221
@@ -2681,12 +2681,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8384579711872472891, guid: 508c619cbdbfe984999be081e25678cc,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 34622909dda712e4abebb2c5379397d9,
-        type: 3}
     - target: {fileID: 8384579711872472890, guid: 508c619cbdbfe984999be081e25678cc,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2703,6 +2697,12 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 8384579711872472891, guid: 508c619cbdbfe984999be081e25678cc,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 34622909dda712e4abebb2c5379397d9,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 508c619cbdbfe984999be081e25678cc, type: 3}
 --- !u!1 &1839945873
@@ -3352,6 +3352,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7965136247928871467, guid: 796eb58b86b896d4cb3638870dc20842,
+        type: 3}
+      propertyPath: storeBtn
+      value: 
+      objectReference: {fileID: 2059767888}
+    - target: {fileID: 7965136247928871467, guid: 796eb58b86b896d4cb3638870dc20842,
+        type: 3}
+      propertyPath: walkBtn
+      value: 
+      objectReference: {fileID: 1869889237}
+    - target: {fileID: 7965136247928871467, guid: 796eb58b86b896d4cb3638870dc20842,
+        type: 3}
+      propertyPath: setRoomBtn
+      value: 
+      objectReference: {fileID: 688884175}
+    - target: {fileID: 7965136247928871467, guid: 796eb58b86b896d4cb3638870dc20842,
+        type: 3}
+      propertyPath: inventoryBtn
+      value: 
+      objectReference: {fileID: 1337811687}
     - target: {fileID: 7507775596426505473, guid: 796eb58b86b896d4cb3638870dc20842,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3407,25 +3427,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7965136247928871467, guid: 796eb58b86b896d4cb3638870dc20842,
-        type: 3}
-      propertyPath: storeBtn
-      value: 
-      objectReference: {fileID: 2059767888}
-    - target: {fileID: 7965136247928871467, guid: 796eb58b86b896d4cb3638870dc20842,
-        type: 3}
-      propertyPath: walkBtn
-      value: 
-      objectReference: {fileID: 1869889237}
-    - target: {fileID: 7965136247928871467, guid: 796eb58b86b896d4cb3638870dc20842,
-        type: 3}
-      propertyPath: setRoomBtn
-      value: 
-      objectReference: {fileID: 688884175}
-    - target: {fileID: 7965136247928871467, guid: 796eb58b86b896d4cb3638870dc20842,
-        type: 3}
-      propertyPath: inventoryBtn
-      value: 
-      objectReference: {fileID: 1337811687}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 796eb58b86b896d4cb3638870dc20842, type: 3}
