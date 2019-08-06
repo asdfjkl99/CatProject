@@ -1008,6 +1008,18 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &647974152 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 296838463468340741, guid: a5594a1d57bea3a479f2f884aead00b4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1924459972}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e575e503469b48b4b8eb814ec7a030a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &686268016 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 105934, guid: 01e99908c875b914594e2345035e241a,
@@ -2793,6 +2805,75 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1001 &1924459972
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6974158092270066490, guid: a5594a1d57bea3a479f2f884aead00b4,
+        type: 3}
+      propertyPath: m_Name
+      value: SceneMgr
+      objectReference: {fileID: 0}
+    - target: {fileID: 587148336040740942, guid: a5594a1d57bea3a479f2f884aead00b4,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 459.34427
+      objectReference: {fileID: 0}
+    - target: {fileID: 587148336040740942, guid: a5594a1d57bea3a479f2f884aead00b4,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 289.32062
+      objectReference: {fileID: 0}
+    - target: {fileID: 587148336040740942, guid: a5594a1d57bea3a479f2f884aead00b4,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1145.495
+      objectReference: {fileID: 0}
+    - target: {fileID: 587148336040740942, guid: a5594a1d57bea3a479f2f884aead00b4,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 587148336040740942, guid: a5594a1d57bea3a479f2f884aead00b4,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 587148336040740942, guid: a5594a1d57bea3a479f2f884aead00b4,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 587148336040740942, guid: a5594a1d57bea3a479f2f884aead00b4,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 587148336040740942, guid: a5594a1d57bea3a479f2f884aead00b4,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 587148336040740942, guid: a5594a1d57bea3a479f2f884aead00b4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 587148336040740942, guid: a5594a1d57bea3a479f2f884aead00b4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 587148336040740942, guid: a5594a1d57bea3a479f2f884aead00b4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a5594a1d57bea3a479f2f884aead00b4, type: 3}
 --- !u!1 &1968997743
 GameObject:
   m_ObjectHideFlags: 0
@@ -2878,6 +2959,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 367758311}
         m_MethodName: OnTouchXButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 647974152}
+        m_MethodName: LoadMain
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
