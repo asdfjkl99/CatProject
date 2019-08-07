@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ItemCount : MonoBehaviour
+public class ShopUIMgr : MonoBehaviour
 {
     short num;
     public Text ScriptTxt;
