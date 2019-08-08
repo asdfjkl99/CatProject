@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MyRoomCtrl : MonoBehaviour
+public class MyRoomUICtrl : MonoBehaviour
 {
     public GameObject FList;
 
@@ -19,10 +19,15 @@ public class MyRoomCtrl : MonoBehaviour
 
     public void OnTouchAddFButton()
     {
-        if(!FList.activeSelf)
-         FList.SetActive(true);
+        if (!FList.activeSelf)
+            FList.SetActive(true);
         else
-         FList.SetActive(false);
+            FList.SetActive(false);
+    }
+
+    public void OnTouchSaveButton()
+    {
+
     }
 
     public void OnTouchF1()
