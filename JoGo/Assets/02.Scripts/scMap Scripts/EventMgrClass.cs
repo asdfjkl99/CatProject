@@ -46,7 +46,7 @@ public class EventMgrClass : MonoBehaviour
         // Get events
         allEvents = GameObject.Find("Events");
 
-        if (events == null)
+        if (allEvents == null)
             Debug.Log("Can't find events Object");
 
         events = GameObject.FindGameObjectsWithTag("EVENT");
