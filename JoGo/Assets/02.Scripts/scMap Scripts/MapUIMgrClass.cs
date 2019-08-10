@@ -66,8 +66,8 @@ public class MapUIMgrClass : MonoBehaviour
 
     public void ToyEventUI(int toyNo)
     {
-        string toyName = "NULL";
-
+        string toyName = CommClientDBCls._instance.GetName(2, Random.Range(0, 4));
+        
         // Item icon Load On Client DB
         //
 

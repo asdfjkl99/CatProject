@@ -136,7 +136,7 @@ public class CommClientDBCls : MonoBehaviour
             Debug.Log("ERROR CODE#2. Wrong category");
             return null;
         }
-
+        
         // Find name in DB
         foreach (XmlNode __node in __nodeList)
         {
