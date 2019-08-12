@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<TOYINFO>
+  <TOY>
+    <NO>0</NO>
+    <NAME>오리 장난감</NAME>
+    <DESC>귀여운 오리이다.</DESC>
+    <EFFECT>10.0f</EFFECT>
+  </TOY>
+  <TOY>
+    <NO>1</NO>
+    <NAME>장난감 기차</NAME>
+    <DESC>칙칙폭폭</DESC>
+    <EFFECT>5.0f</EFFECT>
+  </TOY>
+  <TOY>
+    <NO>2</NO>
+    <NAME>혜수형 바보</NAME>
+    <DESC>메롱</DESC>
+    <EFFECT>50.0f</EFFECT>
+  </TOY>
+  <TOY>
+    <NO>3</NO>
+    <NAME>똥</NAME>
+    <DESC>으악 냄새</DESC>
+    <EFFECT>-10.0f</EFFECT>
+  </TOY>
+</TOYINFO>

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<CATINFO>
+  <CAT>
+    <NO>0</NO>
+    <NAME>근육 고양이</NAME>
+    <RANK>1</RANK>
+  </CAT>
+  <CAT>
+    <NO>1</NO>
+    <NAME>피자 고양이</NAME>
+    <RANK>2</RANK>
+  </CAT>
+  <CAT>
+    <NO>2</NO>
+    <NAME>치킨 고양이</NAME>
+    <RANK>2</RANK>
+  </CAT>
+  <CAT>
+    <NO>3</NO>
+    <NAME>평범한 고양이</NAME>
+    <RANK>3</RANK>
+  </CAT>
+  <CAT>
+    <NO>4</NO>
+    <NAME>고급진 고양이</NAME>
+    <RANK>1</RANK>
+  </CAT>
+</CATINFO>
