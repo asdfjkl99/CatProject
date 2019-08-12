@@ -16,7 +16,7 @@
     <EFFECT>1.0f</EFFECT>
   </FOOD>
   <FOOD>
-    <NO>0</NO>
+    <NO>2</NO>
     <NAME>따뜻한 우유</NAME>
     <DESC>따뜻해서 더 맛있는 우유이다.</DESC>
     <RANK>3</RANK>

@@ -15,8 +15,12 @@ using UnityEngine;
  * This class helps to communicate client database.
  * This can load resoruce files, DB, etc from local device.
  * 
+ * Changes
+ * 
  * 190809 Namhun Kim
- * Write Initialize(), GetName(), GetDesc(), GetUseItemInfo(), FindXMLWithCategory()
+ * Write Initialize(), GetName(), GetDesc(), GetRank(), GetEffect(), FindXMLWithCategory()
+ * 190812 Namhun Kim
+ * Write GetMaxNo()
  **/
 public class CommClientDBCls : MonoBehaviour
 {
@@ -37,6 +41,8 @@ public class CommClientDBCls : MonoBehaviour
             _instance = this;
         else
             Destroy(this.gameObject);
+
+        DontDestroyOnLoad(this.gameObject);
     }
 
     private void Start()
@@ -50,10 +56,13 @@ public class CommClientDBCls : MonoBehaviour
 /////////////////////////////////////////////////////////////////////////////////////
     /**
      * 20190809 Namhun Kim
+     * 
+     * private void Initialize()
      *
      * Initialize member variables and load XML files to member variables
      * 
      * @param    void
+     * 
      * @return   void
      **/
     private void Initialize()
@@ -83,7 +92,19 @@ public class CommClientDBCls : MonoBehaviour
 //                                 Public Function                                 //
 /////////////////////////////////////////////////////////////////////////////////////
     /**
+     * 1908
      * 
+     * public int LoadModel()
+     * 
+     * This function loads modeling from local device and display on screen.
+     * 
+     * @param    int __category   Category no that want to find modeling.
+     *           int __no         No that want to find modeling.
+     *           int __texNo      Texture no that want to find modeling.
+     *           
+     * @return   int __code       Return code that error code or success
+     *                            0: normal
+     *                            __error: Something wrong.
      **/
     public int LoadModel(int __category, int __no, int __texNo) // This is dummy
     {
@@ -91,7 +112,18 @@ public class CommClientDBCls : MonoBehaviour
     }
 
     /**
+     * 1908
      * 
+     * public int LoadImage()
+     * 
+     * This function loads image from local device and display on screen.
+     * 
+     * @param    int __category   Category no that want to find modeling.
+     *           int __no         No that want to find modeling.
+     *           
+     * @return   int __code       Return code that error code or success
+     *                            0: normal
+     *                            __error: Something wrong.
      **/
     public int LoadImage(int __category, int __no) // This is dummy
     {
@@ -99,7 +131,17 @@ public class CommClientDBCls : MonoBehaviour
     }
 
     /**
+     * 1908
      * 
+     * public int LoadMusic()
+     * 
+     * This function loads background music or effect sound from local device and display on screen.
+     * 
+     * @param    string __fileName   music file name.
+     *           
+     * @return   int __code          Return code that error code or success
+     *                               0: normal
+     *                               __error: Something wrong.
      **/
     public int LoadMusic(string __fileName) // This is dummy
     {
@@ -112,6 +154,29 @@ public class CommClientDBCls : MonoBehaviour
         return 0;
     }
 
+    /**
+     * 190812 Namhun Kim
+     * 
+     * Get max "no" from XML and return no
+     * 
+     * @param     int __category   Want to find max no's category
+     * 
+     * @return    int __maxNo      Category's max no
+     *                             0 ~ : normal
+     *                             -1: Wrong __category. Can't find category
+     **/
+    public int GetMaxNo(int __category)
+    {
+        int __maxNo = 0;
+        XmlNodeList __nodeList = FindXmlWithCategory(__category);
+
+        foreach(XmlNode __node in __nodeList)
+        {
+            ++__maxNo;
+        }
+
+        return __maxNo;
+    }
 
     /**
     * 20190809 NamHun Kim
@@ -119,7 +184,8 @@ public class CommClientDBCls : MonoBehaviour
     * Get object name from XML and return name string
     * 
     * @param    int __category   Want to find object's category no
-    * @param    int __no         Want to find object's no
+    *           int __no         Want to find object's no
+    * 
     * @return                    Object name string
     *                            string: normal
     *                            null: Wrong _no param or __categroy param. Can't find object;
@@ -162,7 +228,8 @@ public class CommClientDBCls : MonoBehaviour
     * Get object description from XML and return description string
     * 
     * @param    int __category   Want to find object's category no
-    * @param    int __no         Want to find object's no
+    *           int __no         Want to find object's no
+    *           
     * @return                    Object description string
     *                            string: normal
     *                            null: Wrong __no param or __cateogory param. Can't find object
@@ -209,7 +276,8 @@ public class CommClientDBCls : MonoBehaviour
     * 3 = C
     * 
     * @param    int __category   Want to find object's category no
-    * @param    int __no         Want to find object's no
+    *           int __no         Want to find object's no
+    * 
     * @return                    Object integer rank
     *                            0 ~ 3: normal.
     *                               -1: Wrong __no param. Can't find object.
@@ -254,7 +322,8 @@ public class CommClientDBCls : MonoBehaviour
     * Get object effect value from XML and return effect value.
     * 
     * @param    int __category   Want to find object's category no
-    * @param    int __no         Want to find object's no
+    *           int __no         Want to find object's no
+    *           
     * @return                    Object integer rank
     *                            0 ~ 100.0f: normal.
     *                               -1.0f: Wrong __no param. Can't find object.
@@ -314,6 +383,7 @@ public class CommClientDBCls : MonoBehaviour
      * Find XML file with category and return XML node list
      * 
      * @param    int __category   Want to find object category no
+     * 
      * @return                    Correct XML node list
      *                            XmlNodeList: normal
      *                            null: Wrong __category param. Can't find object
