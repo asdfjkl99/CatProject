@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<FOODINFO>
+  <FOOD>
+    <NO>0</NO>
+    <NAME>평범한 참치캔</NAME>
+    <DESC>평범한 참치캔이다.</DESC>
+    <RANK>4</RANK>
+    <EFFECT>1.0f</EFFECT>
+  </FOOD>
+  <FOOD>
+    <NO>1</NO>
+    <NAME>우유</NAME>
+    <DESC>평범한 우유이다.</DESC>
+    <RANK>4</RANK>
+    <EFFECT>1.0f</EFFECT>
+  </FOOD>
+  <FOOD>
+    <NO>2</NO>
+    <NAME>따뜻한 우유</NAME>
+    <DESC>따뜻해서 더 맛있는 우유이다.</DESC>
+    <RANK>3</RANK>
+    <EFFECT>3.0f</EFFECT>
+  </FOOD>
+</FOODINFO>
