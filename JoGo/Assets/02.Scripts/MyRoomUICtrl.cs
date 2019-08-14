@@ -10,7 +10,7 @@ public class MyRoomUICtrl : MonoBehaviour
     public GameObject getTarget;
     //GameObject models;
 
-    Vector3 add = new Vector3(56.0f, 72.0f, 0.0f);
+    Vector3 add = new Vector3(45.0f, 45.0f, 0.0f);
 
     // Start is called before the first frame update
     void Start()
