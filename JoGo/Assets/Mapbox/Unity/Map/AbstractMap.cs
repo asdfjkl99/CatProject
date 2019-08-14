@@ -292,7 +292,7 @@ namespace Mapbox.Unity.Map
 
 			SetUpMap();
 		}
-
+        
 		public virtual void UpdateMap()
 		{
 			UpdateMap(Conversions.StringToLatLon(_options.locationOptions.latitudeLongitude), Zoom);
