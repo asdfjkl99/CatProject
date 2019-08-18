@@ -30,12 +30,23 @@ using UnityEngine.SceneManagement;
  **/
 public class RandomEventCls : EventCls
 {
+    private Transform _playerTr;
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         InitEventInfo();
+        _playerTr = GameObject.Find("Player").GetComponent<Transform>();
     }
-    
+
+    private void Update()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            this.GetComponent<Transform>().Rotate(Vector3.up * Time.deltaTime * 300.0f * Input.GetAxis("Mouse Y"));
+        }
+    }
+
     /**
      * 190812 Namhun Kim
      * 
