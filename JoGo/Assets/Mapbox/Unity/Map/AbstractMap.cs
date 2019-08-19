@@ -292,7 +292,7 @@ namespace Mapbox.Unity.Map
 
 			SetUpMap();
 		}
-
+        
 		public virtual void UpdateMap()
 		{
 			UpdateMap(Conversions.StringToLatLon(_options.locationOptions.latitudeLongitude), Zoom);
@@ -409,6 +409,7 @@ namespace Mapbox.Unity.Map
 		// Use this for initialization
 		protected virtual void Start()
 		{
+            StartCoroutine("CheckUpdateMap");
 			StartCoroutine("SetupAccess");
 			if (_initializeOnStart)
 			{
@@ -986,5 +987,23 @@ namespace Mapbox.Unity.Map
 		public event Action OnUpdated = delegate { };
 		public event Action OnMapRedrawn = delegate { };
 		#endregion
+
+        IEnumerator CheckUpdateMap()
+        {
+            Vector2 __pos;
+            Vector2d __posD;
+
+            while (true)
+            {
+                yield return new WaitForSeconds(1.0f);
+
+                __pos = GPSMgrCls._instance.GetGPSData();
+
+                __posD.x = (double)__pos.x;
+                __posD.y = (double)__pos.y;
+
+                UpdateMap(__posD, Zoom);
+            }
+        }
 	}
 }
