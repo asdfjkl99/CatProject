@@ -50,3 +50,4 @@ MonoBehaviour:
     type: 3}
   inventoryBtn: {fileID: 7951803525807649817, guid: 74bec3a5b6952284bac13177ba33c56f,
     type: 3}
+  backBtn: {fileID: 7254290718264346004, guid: f78dc7ddbfd20a744abf2d5886135528, type: 3}

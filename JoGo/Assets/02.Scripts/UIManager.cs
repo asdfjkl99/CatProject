@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     public GameObject walkBtn;
     public GameObject setRoomBtn;
     public GameObject inventoryBtn;
+    public GameObject backBtn;
 
     int clickCount = 0;
 
@@ -18,6 +19,7 @@ public class UIManager : MonoBehaviour
         walkBtn.SetActive(true);
         setRoomBtn.SetActive(true);
         inventoryBtn.SetActive(true);
+        backBtn.SetActive(true);
         clickCount++;
     }
 
@@ -29,6 +31,7 @@ public class UIManager : MonoBehaviour
             walkBtn.SetActive(false);
             setRoomBtn.SetActive(false);
             inventoryBtn.SetActive(false);
+            backBtn.SetActive(false);
             clickCount = 0;
         }
     }
