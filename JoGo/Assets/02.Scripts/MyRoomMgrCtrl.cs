@@ -13,7 +13,7 @@ public class MyRoomMgrCtrl : MonoBehaviour
     private GameObject mainCamera;
     private GameObject myroomCamera;
 
-    private CatUI catUI;
+    //private CatUI catUI;
     public ObjectCtrl objectCtrl;
 
     void Start()
@@ -23,7 +23,7 @@ public class MyRoomMgrCtrl : MonoBehaviour
         mainCamera = GameObject.Find("MainCamera");
         myroomCamera = GameObject.Find("MyRoomCamera");
         objectCtrl = FindObjectOfType(typeof(ObjectCtrl)) as ObjectCtrl;
-       catUI = gameObject.GetComponent<CatUI>();
+        //catUI = gameObject.GetComponent<CatUI>();
         //objectCtrl = gameObject.GetComponent<ObjectCtrl>();
     }
 
