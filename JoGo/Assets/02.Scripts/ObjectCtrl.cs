@@ -7,37 +7,71 @@ public class ObjectCtrl : MonoBehaviour
     public Material[] materials;
 
     private Vector3 initMousePos;
-    GameObject tile;
+    private GameObject tile;
 
-    int tileColor = 0;
+    int tileColor;
     Vector3 originalPos;
     bool getInitPos = false;
     public int floor = 1;
     bool isCat = false;
-    // bool catgoup = false;
-    // bool isUp = false;
+    bool catgoup = false;
+    bool isCatUp = false;
+    public Vector3 objectPos;
 
     private GameObject selectCircle;
     public GameObject getTarget;
     bool isMouseDragging;
+    Vector3 colliderPos;
     Vector3 offsetValue;
     Vector3 positionOfScreen;
 
+    public GameObject currentTarget = null;
+    MyRoomUICtrl myroomUICtrl;
+
+    public float MaxX, MaxZ, MinX, MinZ;
+    public float X, Y, Z;
+    Vector3 changePos = new Vector3(0.0f, -5.0f, 0.0f);
+
+    // 충돌시 부모가 고양이인지 확인하는 용도
+    public Animator collParent = null;
+
     void Start()
     {
+        myroomUICtrl = GameObject.Find("MyRoomUI").GetComponent<MyRoomUICtrl>();
+        tileColor = 0;
+        isMouseDragging = false;
+        objectPos = transform.position;
+
         tile = transform.Find("Tile").gameObject;
 
         if (transform.tag == "Cat")
             isCat = true;
 
         selectCircle = GameObject.Find("SelectCircle");
+
+        MinX = -10.0f;
+        MaxX = 11.5f;
+        MinZ = -168.0f;
+        MaxZ = -146.5f;
     }
 
     void Update()
     {
-        if(isCat)
-           UpDownCat();
+        if(myroomUICtrl.getTarget != null)
+          currentTarget = myroomUICtrl.getTarget;
 
+        CheckPosition();
+        SetTileColor();
+
+        X = transform.position.x;
+        Y = transform.position.y;
+        Z = transform.position.z;
+    }
+
+    // 메인 상태일때 타일 없애기 
+    private void OnDisable()
+    {
+        tileColor = 2;
         SetTileColor();
     }
 
@@ -46,57 +80,108 @@ public class ObjectCtrl : MonoBehaviour
         tile.GetComponentInChildren<MeshRenderer>().material = materials[tileColor];
     }
 
-    void CheckPosition()
+    void CheckCat()
     {
-        if (tileColor == 1)
+        if (isCat == true && tileColor == 1 && currentTarget.tag == "Cat")
         {
-            transform.position = originalPos;
+            Vector3 temppos = transform.position + changePos;
+            transform.position = temppos;
+
+            Debug.Log(currentTarget.tag);
+        }
+    }
+
+    void isUp()
+    {
+        if(transform.position.y < objectPos.y)
+        {
+            Vector3 tempPos = transform.position;
+            tempPos.y = objectPos.y;
+            transform.position = tempPos;
+
+            isCatUp = false;
         }
     }
 
     // 가구 위에 올렸다 내렸다
     void UpDownCat()
     {
-        //Vector3 changePos = transform.position;
-
-        //if (isUp)
-        //{
-        //    changePos.y += 5.0f;
-        //}
-        //else
-        //    changePos.y -= 5.0f;
-
-        ////if(!catgoup)
-        //transform.position = changePos;
-    }
-
-    void OnCollisionStay(Collision coll)
-    {
-        tileColor = 1;
-
-        // 가구 위에 올렸다 내렸다
-        if (isCat && coll.collider.tag == "Furniture")
+        if (!isCatUp)
         {
-            //     catgoup = true;
-            //     tileColor = 0;
+            colliderPos += changePos;
+
+            if (catgoup)
+            {
+                transform.position = colliderPos;
+                tileColor = 0;
+                catgoup = false;
+                isCatUp = true;
+                Debug.Log("a");
+            }
         }
-        //else
-        //    catgoup = false;
     }
 
-    void OnCollisionExit(Collision coll)
+    void CheckPosition()
     {
-        tileColor = 0;
+        if (transform.position.x < MinX || transform.position.x > MaxX || transform.position.z < MinZ || transform.position.z > MaxZ)
+        {
+            tileColor = 1;
+        }
     }
 
-     void GetInitPos(Vector3 initpos)
+    void ReturnPosition()
+    {
+        if (tileColor == 1)
+        {
+            transform.position = originalPos;
+            tileColor = 0;
+        }
+    }
+
+    void GetInitPos(Vector3 initpos)
     {
         originalPos = initpos;
+    }
+
+
+    private void OnTriggerEnter(Collider coll)
+    {
+       collParent = coll.gameObject.GetComponentInParent<Animator>();
+    }
+
+    void OnTriggerStay(Collider coll)
+    {
+        tileColor = 1;
+        colliderPos = coll.transform.position;
+
+        if (currentTarget != null)
+        {
+            if (currentTarget.tag == "Cat" && (coll.tag == "Furniture" || collParent == null))
+            {
+                catgoup = true;
+            }
+            else
+                catgoup = false;
+        }
+
+        if(currentTarget.tag != "Cat")
+            CheckCat();
+    }
+
+    void OnTriggerExit(Collider coll)
+    {
+        tileColor = 0;
+        catgoup = false;
     }
 
     //처음마우스 클릭시
     void OnMouseDown()
     {
+        if (isCat)
+            isUp();
+
+        tileColor = 0;
+
         RaycastHit hitInfo;
         getTarget = ReturnClickedObject(out hitInfo);
         if (getTarget != null)
@@ -109,7 +194,8 @@ public class ObjectCtrl : MonoBehaviour
             GameObject.Find("MyRoomUI").GetComponent<MyRoomUICtrl>().getTarget = getTarget;
         }
 
-        GetInitPos(transform.position);
+        if(tileColor == 0)
+          GetInitPos(transform.position);
 
         Vector3 add = new Vector3(1.4f, 0.0f, -2.0f);
 
@@ -117,16 +203,12 @@ public class ObjectCtrl : MonoBehaviour
             selectCircle.transform.position = transform.position + add;
     }
 
-    private void OnMouseUp()
-    {
-        CheckPosition();
-        getInitPos = false;
-        isMouseDragging = false;
-    }
-
     //마우스 드래그시
     void OnMouseDrag()
     {
+        if (isCat)
+            isUp();
+
         if (transform.tag == "Furniture" && originalPos == transform.position)
         {
             selectCircle.SetActive(true);
@@ -139,8 +221,21 @@ public class ObjectCtrl : MonoBehaviour
         //converting screen position to world position with offset changes.
         Vector3 currentPosition = Camera.main.ScreenToWorldPoint(currentScreenSpace) + offsetValue;
 
-        if(getTarget != null)
-          getTarget.transform.position = currentPosition;
+        currentPosition.y = transform.position.y;
+
+        if (getTarget != null)
+            getTarget.transform.position = currentPosition;
+    }
+
+    private void OnMouseUp()
+    {
+        if (isCat)
+            UpDownCat();
+
+        ReturnPosition();
+        CheckCat();
+        getInitPos = false;
+        isMouseDragging = false;
     }
 
     GameObject ReturnClickedObject(out RaycastHit hit)
