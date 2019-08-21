@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class MyRoomUICtrl : MonoBehaviour
 {
-    public GameObject RemoveButton;
-    public GameObject FList;
+    private GameObject RemoveButton;
+    private GameObject FList;
     private GameObject selectcircle;
-    public GameObject getTarget;
-    //GameObject models;
+    public GameObject getTarget = null;
 
-    Vector3 add = new Vector3(45.0f, 45.0f, 0.0f);
+    Vector3 add = new Vector3(0.0f, -10.0f, 0.0f);
 
     // Start is called before the first frame update
     void Start()
     {
+        RemoveButton = GameObject.Find("RemoveButton");
+        FList = GameObject.Find("FList");
         RemoveButton.SetActive(false);
         FList.SetActive(false);
         selectcircle = GameObject.Find("SelectCircle");
-       // models = GameObject.Find("Models");
     }
 
     private void Update()
