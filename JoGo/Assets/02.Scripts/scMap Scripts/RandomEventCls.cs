@@ -26,11 +26,15 @@ using UnityEngine.SceneManagement;
  * Changes
  * 
  * 190812 Namhun Kim
- * Write InitEventInfo(), CatEvent(), UseItemEvent(), MoneyEvent()
+ * Write InitEventInfo(), CatEvent(), UseItemEvent(), MoneyEvent().
+ * 190821 Namhun Kim
+ * Change event's rotation logic.
  **/
 public class RandomEventCls : EventCls
 {
-    private Transform _playerTr;
+    private Transform _playerTr; // Player object's Transform component
+
+    private Vector2 _eventLoc;
 
     // Start is called before the first frame update
     private void Start()
@@ -41,10 +45,7 @@ public class RandomEventCls : EventCls
 
     private void Update()
     {
-        if (Input.GetMouseButton(0))
-        {
-            this.GetComponent<Transform>().Rotate(Vector3.up * Time.deltaTime * 300.0f * Input.GetAxis("Mouse Y"));
-        }
+        this.gameObject.GetComponent<Transform>().rotation = Quaternion.LookRotation(_playerTr.forward, Vector3.up);
     }
 
     /**

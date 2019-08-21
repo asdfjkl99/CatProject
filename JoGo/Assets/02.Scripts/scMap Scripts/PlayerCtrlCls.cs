@@ -19,12 +19,17 @@ using UnityEngine;
  * Write class
  * 190818 Namhun Kim
  * Write player object's rotation for camera
+ * 190821 Namhun Kim
+ * Rotate speed set to 10.0f
+ * Fix player rotates
  **/
 public class PlayerCtrlCls : MonoBehaviour
 {
     private Transform _myTr; // Player's Transform component
 
     private float _rotSpeed; // Rotate speed
+    
+    private Vector2 _oldTouchPos; // Old touch position
 
     // Singleton
     //
@@ -71,7 +76,7 @@ public class PlayerCtrlCls : MonoBehaviour
     {
         _myTr = this.GetComponent<Transform>();
 
-        _rotSpeed = 300.0f;
+        _rotSpeed = 10.0f;
     }
 
 /////////////////////////////////////////////////////////////////////////////////////
@@ -88,14 +93,49 @@ public class PlayerCtrlCls : MonoBehaviour
      * @param    void
      * 
      * @return   void
+     * 
+     * Changes 190821
+     * Fix bug
      **/
     private void RotatePlayer()
     {
-        if (Input.GetMouseButton(0))
-        {
-            _myTr.Rotate(Vector3.up * Time.deltaTime * _rotSpeed * Input.GetAxis("Mouse Y"));
-        }
+        float __dist = 0.0f; // Distance between old touch position and new touch position
 
+        // On mobile device
+        if (Input.touchCount > 0)
+        {
+            Debug.Log("Touch");
+
+            if (Input.GetTouch(0).phase == TouchPhase.Moved)
+            {
+                Vector2 __newTouchPos = Input.GetTouch(0).position;
+
+                if (Input.GetAxis("Mouse X") + Input.GetAxis("Mouse Y") < 0) // Rotation direction 
+                    __dist *= -1.0f;
+
+                __dist = Vector2.Distance(_oldTouchPos, __newTouchPos); // Calculate distance between old position and new position
+                _myTr.Rotate(Vector3.up * _rotSpeed * Time.deltaTime * __dist); // Rotate player character
+
+                _oldTouchPos = __newTouchPos; // Renew old touch position
+            }
+        }
+        // On PC
+        // Algorithm is same as mobile device
+        else if (Input.GetMouseButton(0))
+        {
+            Vector2 __newTouchPos = Input.mousePosition;
+
+            __dist = Vector2.Distance(_oldTouchPos, __newTouchPos);
+
+            if (Input.GetAxis("Mouse X") + Input.GetAxis("Mouse Y") < 0)
+                __dist *= -1.0f;
+
+            _myTr.Rotate(Vector3.up * _rotSpeed * Time.deltaTime * __dist);
+
+            _oldTouchPos = __newTouchPos;
+        }
+        else
+            _oldTouchPos = Input.mousePosition;
     }
 }
 
