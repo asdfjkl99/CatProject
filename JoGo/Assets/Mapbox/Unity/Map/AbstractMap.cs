@@ -986,7 +986,10 @@ namespace Mapbox.Unity.Map
 		/// </summary>
 		public event Action OnUpdated = delegate { };
 		public event Action OnMapRedrawn = delegate { };
-		#endregion
+        #endregion
+
+        private Vector2d _oldGPSPos;
+        private WaitForSeconds waitSec = new WaitForSeconds(3.0f);
 
         IEnumerator CheckUpdateMap()
         {
@@ -995,14 +998,17 @@ namespace Mapbox.Unity.Map
 
             while (true)
             {
-                yield return new WaitForSeconds(1.0f);
+                yield return waitSec;
 
                 __pos = GPSMgrCls._instance.GetGPSData();
 
                 __posD.x = (double)__pos.x;
                 __posD.y = (double)__pos.y;
 
-                UpdateMap(__posD, Zoom);
+                if(_oldGPSPos != __posD)
+                    UpdateMap(__posD, Zoom);
+
+                _oldGPSPos = __posD;
             }
         }
 	}

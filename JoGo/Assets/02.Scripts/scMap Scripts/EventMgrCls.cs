@@ -30,6 +30,8 @@ public class EventMgrCls : MonoBehaviour
     private GameObject _allEvents; // This variable has empty gameobject that all events have.
     private GameObject[] _events; // This varaialbes list has each events information.
 
+    private Vector2 _eventsLoc;
+
     // Singleton
     //
     public static EventMgrCls _instance = null;
@@ -76,6 +78,9 @@ public class EventMgrCls : MonoBehaviour
 
         if (_events == null)
             Debug.Log("Can't find EVENT tag Object");
+
+        _eventsLoc.x = 36.601281f;
+        _eventsLoc.y = 127.298111f;
     }
 
 /////////////////////////////////////////////////////////////////////////////////////
