@@ -26,16 +26,28 @@ using UnityEngine.SceneManagement;
  * Changes
  * 
  * 190812 Namhun Kim
- * Write InitEventInfo(), CatEvent(), UseItemEvent(), MoneyEvent()
+ * Write InitEventInfo(), CatEvent(), UseItemEvent(), MoneyEvent().
+ * 190821 Namhun Kim
+ * Change event's rotation logic.
  **/
 public class RandomEventCls : EventCls
 {
+    private Transform _playerTr; // Player object's Transform component
+
+    private Vector2 _eventLoc;
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         InitEventInfo();
+        _playerTr = GameObject.Find("Player").GetComponent<Transform>();
     }
-    
+
+    private void Update()
+    {
+        this.gameObject.GetComponent<Transform>().rotation = Quaternion.LookRotation(_playerTr.forward, Vector3.up);
+    }
+
     /**
      * 190812 Namhun Kim
      * 

@@ -6,6 +6,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.IO;
 
 /////////////////////////////////////////////////////////////////////////////////////
 // 0 == Cat Event                                                                  //
@@ -24,12 +25,16 @@ using UnityEngine;
  * 
  * 190812 Namhun Kim
  * Write _evtType, _dist, Initialize()
+ * 190814 Namhun Kim
+ * Write _location
  **/
 public class EventCls : MonoBehaviour
 {
     protected int _evtType; // Events type
     protected float _dist; // Distance that user between event
 
+    protected Vector2 _location; // Event location
+    
     /**
      * 190812 Namhun Kim
      * 
@@ -45,5 +50,8 @@ public class EventCls : MonoBehaviour
     {
         _evtType = 0;
         _dist = 0;
+
+        _location.x = 0;
+        _location.y = 0;
     }
 }
