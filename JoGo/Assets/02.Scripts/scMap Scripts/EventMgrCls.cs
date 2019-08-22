@@ -24,7 +24,7 @@ using UnityEngine.SceneManagement;
  **/
 public class EventMgrCls : MonoBehaviour
 {
-    private WaitForSeconds _secChangeEvent = new WaitForSeconds(300.0f); // Event Timer time
+    private WaitForSeconds _secChangeEvent = new WaitForSeconds(10.0f); // Event Timer time
     private WaitForSeconds _secDistCheck = new WaitForSeconds(1.0f); // Disatnce Check time
 
     private GameObject _allEvents; // This variable has empty gameobject that all events have.
@@ -133,6 +133,7 @@ public class EventMgrCls : MonoBehaviour
                 __evt.SetActive(true);
                 __evt.SendMessage("InitEventInfo"); // Send message on each events
             }
+            Debug.Log("Change events");
         }
     }
 
