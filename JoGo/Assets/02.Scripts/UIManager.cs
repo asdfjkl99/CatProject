@@ -20,6 +20,7 @@ public class UIManager : MonoBehaviour
         setRoomBtn.SetActive(true);
         inventoryBtn.SetActive(true);
         backBtn.SetActive(true);
+
         clickCount++;
     }
 
