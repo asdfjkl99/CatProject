@@ -2,18 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class MyRoomMgrCtrl : MonoBehaviour
 {
     string currentScene;
-    bool isMain = true;
+    bool isMain = false;
 
     // 버튼 누를시 변수 넣을 곳
+
     private GameObject myRoomUI;
     private GameObject mainCamera;
     private GameObject myroomCamera;
-
-    public int setcamera = 0;
 
     //private CatUI catUI;
     public ObjectCtrl objectCtrl;
@@ -31,13 +29,21 @@ public class MyRoomMgrCtrl : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            if (isMain)
+                isMain = false;
+            else
+                isMain = true;
+        }
+
         CheckScene();
         ChangeUI();
     }
 
     void CheckScene()
     {
-        if (setcamera == 0)
+        if (isMain)
         {
             currentScene = "main";
         }

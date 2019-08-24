@@ -9,7 +9,7 @@ public class CatClickCls : MonoBehaviour
     private GameObject itemListUI;
     private GameObject itemDescUI;
     private Transform target;
-    private int catUICount;
+    public int catUICount;
 
     void CatUIOnOff()
     {
@@ -30,7 +30,7 @@ public class CatClickCls : MonoBehaviour
         {
             // the object identified by hit.transform was clicked
             // do whatever you want
-            if (hit.collider.tag == "CAT")
+            if (hit.collider.tag == "Cat")
             {
                 Debug.Log("maw?");
 
