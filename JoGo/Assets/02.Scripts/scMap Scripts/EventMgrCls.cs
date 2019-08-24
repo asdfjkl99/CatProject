@@ -24,11 +24,13 @@ using UnityEngine.SceneManagement;
  **/
 public class EventMgrCls : MonoBehaviour
 {
-    private WaitForSeconds _secChangeEvent = new WaitForSeconds(300.0f); // Event Timer time
+    private WaitForSeconds _secChangeEvent = new WaitForSeconds(10.0f); // Event Timer time
     private WaitForSeconds _secDistCheck = new WaitForSeconds(1.0f); // Disatnce Check time
 
     private GameObject _allEvents; // This variable has empty gameobject that all events have.
     private GameObject[] _events; // This varaialbes list has each events information.
+
+    private Vector2 _eventsLoc;
 
     // Singleton
     //
@@ -76,6 +78,9 @@ public class EventMgrCls : MonoBehaviour
 
         if (_events == null)
             Debug.Log("Can't find EVENT tag Object");
+
+        _eventsLoc.x = 36.601281f;
+        _eventsLoc.y = 127.298111f;
     }
 
 /////////////////////////////////////////////////////////////////////////////////////
@@ -128,6 +133,7 @@ public class EventMgrCls : MonoBehaviour
                 __evt.SetActive(true);
                 __evt.SendMessage("InitEventInfo"); // Send message on each events
             }
+            Debug.Log("Change events");
         }
     }
 
