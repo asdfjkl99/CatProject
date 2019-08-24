@@ -7,6 +7,8 @@ public class CatItaBtnMng : MonoBehaviour
     private int btnCount = 0;
     private GameObject catItaBtn;
     private GameObject mainBtnUI;
+   
+    
 
     public GameObject itemListUI;
     public GameObject itemDescUI;
@@ -107,9 +109,9 @@ public class CatItaBtnMng : MonoBehaviour
     public void OnTouchItemUseBtn()
     {
         itemDescUI.SetActive(false);
+        
         catItaBtn.SetActive(false);
         mainBtnUI.SetActive(true);
-
     }
 
     private void OnEnable()
@@ -127,8 +129,9 @@ public class CatItaBtnMng : MonoBehaviour
     {
         catItaBtn = GameObject.Find("CatIta");
         mainBtnUI = GameObject.Find("MainBtnUICanvas");
+     
     }
-    
+
 
     /*
     // Update is called once per frame

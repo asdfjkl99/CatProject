@@ -5,14 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class LoadSceneManager : MonoBehaviour
 {
-    public int setCamera = 0;
-    private GameObject mainMgr;
-
-    private void Start()
-    {
-        mainMgr = GameObject.Find("MainUIMgr");
-    }
-
     public void LoadStore()
     {
         SceneManager.LoadScene("Shop");
@@ -25,9 +17,7 @@ public class LoadSceneManager : MonoBehaviour
 
     public void LoadSetRoom()
     {
-        setCamera = 1;
-        GameObject.Find("MyRoomMgr").GetComponent<MyRoomMgrCtrl>().setcamera = setCamera;
-        mainMgr.SetActive(false);
+        SceneManager.LoadScene("MyRoom");
     }
 
     public void LoadInventory()
@@ -37,18 +27,6 @@ public class LoadSceneManager : MonoBehaviour
 
     public void LoadMain()
     {
-        SceneManager.LoadScene("MyRoom");
-    }
-
-    public void ChangeCamera()
-    {
-        setCamera = 0;
-        GameObject.Find("MyRoomMgr").GetComponent<MyRoomMgrCtrl>().setcamera = setCamera;
-        mainMgr.SetActive(true);
-    }
-
-    private void Update()
-    {
-       
+        SceneManager.LoadScene("Cat_Interaction");
     }
 }
