@@ -11,7 +11,35 @@ public class UIManager : MonoBehaviour
     public GameObject inventoryBtn;
     public GameObject backBtn;
 
-    int clickCount = 0;
+    public int setcamera = 0;
+    private int originalcamera = 0;
+
+    private int clickCount = 0;
+
+    private void Start()
+    {
+
+    }
+
+    private void Update()
+    {
+        GetCameraNum();
+        CheckCameraNum();
+    }
+
+    private void GetCameraNum()
+    {
+        setcamera = GameObject.Find("LoadSceneMgr").GetComponent<LoadSceneManager>().setCamera;
+    }
+
+    private void CheckCameraNum()
+    {
+        if (originalcamera != setcamera)
+        {
+            clickCount = 2;
+            SetActiveFalse();
+        }
+    }
 
     public void SetActiveTrue()
     {
@@ -20,6 +48,7 @@ public class UIManager : MonoBehaviour
         setRoomBtn.SetActive(true);
         inventoryBtn.SetActive(true);
         backBtn.SetActive(true);
+
         clickCount++;
     }
 
@@ -36,5 +65,5 @@ public class UIManager : MonoBehaviour
         }
     }
 
-   
+
 }
