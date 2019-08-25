@@ -135,7 +135,7 @@ public class PlayerCtrlCls : MonoBehaviour
             _oldTouchPos = __newTouchPos;
         }
         else
-            _oldTouchPos = Input.mousePosition;
+            _oldTouchPos = Input.GetTouch(0).position;
     }
 }
 

@@ -21,6 +21,8 @@ using UnityEngine.SceneManagement;
  * 190812 Namhun Kim
  * - Write DistCheck()
  * - Change "Timer" coroutine name to "EventTimer"
+ * 190825 Namhun Kim
+ * - Write MoveEventsOnUpdateMap()
  **/
 public class EventMgrCls : MonoBehaviour
 {
@@ -30,7 +32,7 @@ public class EventMgrCls : MonoBehaviour
     private GameObject _allEvents; // This variable has empty gameobject that all events have.
     private GameObject[] _events; // This varaialbes list has each events information.
 
-    private Vector2 _eventsLoc;
+    private Vector3 _eventsLoc; // Jochiwon latitude longtitude
 
     // Singleton
     //
@@ -64,6 +66,11 @@ public class EventMgrCls : MonoBehaviour
      * @param    void
      * 
      * @return   void
+     * 
+     * Changes
+     * 
+     * 190824 Namhun Kim
+     * - add jochiwon latitude longtitude
      **/
     private void Initialize()
     {
@@ -79,8 +86,11 @@ public class EventMgrCls : MonoBehaviour
         if (_events == null)
             Debug.Log("Can't find EVENT tag Object");
 
-        _eventsLoc.x = 36.601281f;
-        _eventsLoc.y = 127.298111f;
+        // Jochiwon latituide longtitude
+        _eventsLoc.x = 127.298111f; // latitude
+        _eventsLoc.y = 0.0f;
+        _eventsLoc.z = 36.601281f; // longtitude
+        
     }
 
 /////////////////////////////////////////////////////////////////////////////////////
@@ -160,6 +170,26 @@ public class EventMgrCls : MonoBehaviour
                 }
             }
         }
+    }
+
+    /**
+     * 190825 Namhun Kim
+     * 
+     * Transform latitude longtitude to Unity coordinate.
+     * And move position if player move.
+     * 
+     * @param    Vector3 __latLon   This is latitude and longtitude position.
+     * 
+     * @return   void
+     **/
+    public void MoveEventsOnUpdateMap(Vector3 __latLon)
+    {
+        float __latLonDist = Vector3.Distance(_eventsLoc, __latLon); // Move distance
+        Vector3 __normal = Vector3.Normalize(__latLon - _eventsLoc); // Normal vector
+
+        __latLonDist = 20.828792f * __latLonDist / 0.001131f; // Change to unity coordinate
+
+        _allEvents.GetComponent<Transform>().SetPositionAndRotation(Vector3.up * 2.5f + -__normal * __latLonDist, Quaternion.Euler(0.0f,0.0f,0.0f)); // Set position
     }
 }
 
