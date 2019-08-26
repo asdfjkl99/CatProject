@@ -91,21 +91,23 @@ public class MyRoomUICtrl : MonoBehaviour
             instance.transform.parent = Models.transform;
             isInstantiate = true;
         }
+
+        FList.SetActive(false);
     }
 
     public void OnTouchF2()
     {
-
+        FList.SetActive(false);
     }
 
     public void OnTouchF3()
     {
-
+        FList.SetActive(false);
     }
 
     public void OnTouchF4()
     {
-
+        FList.SetActive(false);
     }
 
 }

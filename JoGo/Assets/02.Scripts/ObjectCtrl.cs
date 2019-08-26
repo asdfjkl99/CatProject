@@ -89,7 +89,7 @@ public class ObjectCtrl : MonoBehaviour
     // 가구 선택 UI 연결
     private void FindSelectCircle()
     {
-        selectCircle = GameObject.Find("SelectCircle");
+        selectCircle = GameObject.Find("MyRoomUI").transform.Find("SelectCircle").gameObject;
     }
 
     // 현재 위치 보기
@@ -209,10 +209,14 @@ public class ObjectCtrl : MonoBehaviour
                 collIsFurniture = true;
         }
 
-        if (currentTarget.tag == "Cat" && coll.tag == "Furniture")
-            myColl = coll.gameObject;
-        else if (currentTarget.tag == "Cat" && coll.tag == "Tile" && collIsFurniture)
-            myColl = coll.gameObject.transform.parent.gameObject;
+        if (currentTarget != null)
+            if (currentTarget.tag == "Cat")
+            {
+                if (coll.tag == "Furniture")
+                    myColl = coll.gameObject;
+                else if (coll.tag == "Tile" && collIsFurniture)
+                    myColl = coll.gameObject.transform.parent.gameObject;
+            }
     }
 
     // 충돌중
@@ -225,19 +229,20 @@ public class ObjectCtrl : MonoBehaviour
         colliderPos = coll.transform.position;
 
         // 현재 레이캐스트가 고양이고 가구와 부딪힌 경우
-        if (currentTarget.tag == "Cat" && collIsFurniture)
-        {
-            if (myColl != null && myColl.GetComponent<ObjectCtrl>())
+        if (currentTarget != null)
+            if (currentTarget.tag == "Cat" && collIsFurniture)
             {
-                if (!(myColl.GetComponent<ObjectCtrl>().catIsOn))
+                if (myColl != null && myColl.GetComponent<ObjectCtrl>())
                 {
-                    catgoup = true;
-                    myColl.GetComponent<ObjectCtrl>().CatOnMe = gameObject;
+                    if (!(myColl.GetComponent<ObjectCtrl>().catIsOn))
+                    {
+                        catgoup = true;
+                        myColl.GetComponent<ObjectCtrl>().CatOnMe = gameObject;
+                    }
+                    else
+                        catgoup = false;
                 }
-                else
-                    catgoup = false;
             }
-        }
     }
 
     // 충돌 끝
@@ -261,9 +266,6 @@ public class ObjectCtrl : MonoBehaviour
 
         if (isCat)
             IsUp();
-
-        if (selectCircle == null)
-            FindSelectCircle();
 
         // 가구만 가구삭제 버튼을 나오게 하기위한 조건문
         if (transform.tag == "Furniture")
