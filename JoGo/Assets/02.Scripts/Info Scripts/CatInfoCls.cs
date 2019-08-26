@@ -3,6 +3,7 @@
 //                 Cat Information                  //
 //                                                  //
 //////////////////////////////////////////////////////
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,11 +26,32 @@ public class CatInfoCls : InfoCls
     private int part_tail;
 
     private Vector3 _pos;
-    private System.DateTime _catchDate;
+    private DateTime _catchDate;
 
     public CatInfoCls()
     {
         Initialize();
+    }
+
+    public CatInfoCls(int __id, int __texNo, int __catNo, string __name, int __breed, int __age, int __sex, int __rank, int __inti, Vector3 __pos, DateTime __date)
+    {
+        _category = (int)CATEGORY.CAT;
+        _id = __id;
+        _texNo = __texNo;
+        _catNo = __catNo;
+        _name = __name;
+        _no = __breed;
+        _age = __age;
+        _sex = __sex;
+        _rank = __rank;
+        _inti = __inti;
+
+        part_head = 0;
+        part_body = 0;
+        part_tail = 0;
+
+        _pos = __pos;
+        _catchDate = __date;
     }
 
     //////////////////////////////////////////////////////
@@ -154,11 +176,11 @@ public class CatInfoCls : InfoCls
     //
     public void SetInfoRandomize()
     {
-        _no = Random.Range(0, 10);
-        _texNo = Random.Range(0, 3);
-        _rank = Random.Range(0, 4);
-        _sex = Random.Range(0, 2);
-        _age = Random.Range(1, 6);
+        _no = UnityEngine.Random.Range(0, 10);
+        _texNo = UnityEngine.Random.Range(0, 3);
+        _rank = UnityEngine.Random.Range(0, 4);
+        _sex = UnityEngine.Random.Range(0, 2);
+        _age = UnityEngine.Random.Range(1, 6);
 
         // Get name from client
         _name = CommClientDBCls._instance.GetName(0, _no);
