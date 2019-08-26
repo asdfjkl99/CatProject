@@ -7,15 +7,16 @@ public class CatItaBtnMng : MonoBehaviour
     private int btnCount = 0;
     private GameObject catItaBtn;
     private GameObject mainBtnUI;
-   
-    
+    private CatClickCls catCountMng;
 
     public GameObject itemListUI;
     public GameObject itemDescUI;
+    public GameObject catInfoUI;
     public GameObject feedingBtn;
     public GameObject playingBtn;
     public GameObject walkingBtn;
     public GameObject informationBtn;
+    public GameObject catInfoBackBtn;
 
     public void OnTouchFeedingtBtn()
     {
@@ -32,6 +33,11 @@ public class CatItaBtnMng : MonoBehaviour
         }
         else
         {
+            if(itemDescUI.active || itemListUI.active)
+            {
+                itemListUI.SetActive(false);
+                itemDescUI.SetActive(false);
+            }
             //feedingBtn.SetActive(true);
             playingBtn.SetActive(true);
             walkingBtn.SetActive(true);
@@ -54,6 +60,11 @@ public class CatItaBtnMng : MonoBehaviour
         }
         else
         {
+            if (itemDescUI.active || itemListUI.active)
+            {
+                itemListUI.SetActive(false);
+                itemDescUI.SetActive(false);
+            }
             feedingBtn.SetActive(true);
             //playingBtn.SetActive(true);
             walkingBtn.SetActive(true);
@@ -90,7 +101,9 @@ public class CatItaBtnMng : MonoBehaviour
             feedingBtn.SetActive(false);
             playingBtn.SetActive(false);
             walkingBtn.SetActive(false);
-           // informationBtn.SetActive(false);
+            // informationBtn.SetActive(false);
+            catInfoUI.SetActive(true);
+            mainBtnUI.SetActive(false);
         }
         else
         {
@@ -105,6 +118,7 @@ public class CatItaBtnMng : MonoBehaviour
     {
         itemListUI.SetActive(false);
         itemDescUI.SetActive(true);
+       
     }
     public void OnTouchItemUseBtn()
     {
@@ -112,7 +126,20 @@ public class CatItaBtnMng : MonoBehaviour
         
         catItaBtn.SetActive(false);
         mainBtnUI.SetActive(true);
+        catCountMng.catUICount++;
+
     }
+    public void OnTouchCatInfoBackBtn()
+    {
+        catInfoUI.SetActive(false);
+        catItaBtn.SetActive(false);
+        mainBtnUI.SetActive(true);
+        catCountMng.catUICount++;
+    }
+    /*public void OnTouchCatByeBtn()
+    {
+        
+    }*/
 
     private void OnEnable()
     {
@@ -128,8 +155,8 @@ public class CatItaBtnMng : MonoBehaviour
     void Start()
     {
         catItaBtn = GameObject.Find("CatIta");
-        mainBtnUI = GameObject.Find("MainBtnUICanvas");
-     
+        mainBtnUI = GameObject.Find("MainUIMgr");
+        catCountMng = GameObject.Find("CatUICanvas").GetComponent<CatClickCls>();
     }
 
 
