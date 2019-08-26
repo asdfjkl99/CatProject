@@ -5,9 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/01.Scenes/Cat_Interaction.unity
-    guid: c98c1702ca0959040bbf797f87f083b9
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/01.Scenes/scMap.unity
     guid: c4c0d29f3ec1c044c84e80efac1d8a15

@@ -12,8 +12,8 @@ using UnityEngine;
 //////////////////////////////////////////////////////
 public class FurInfoCls : InfoCls
 {
-    // Furniture unique number
-    private int _furNo;
+    string _name;
+    string _desc;
     // Furniture position
     private Vector3 _pos;
     // Furniture usage
@@ -27,11 +27,28 @@ public class FurInfoCls : InfoCls
         Initialize();
     }
 
+    public FurInfoCls(int __id, int __no, Vector3 __pos, bool __usage)
+    {
+        _category = (int)CATEGORY.FNT;
+        _id = __id;
+        _no = __no;
+        _pos = __pos;
+        _usage = __usage;
+    }
+
+    public FurInfoCls(int __no, string __name, string __desc, int __cost)
+    {
+        _category = (int)CATEGORY.FNT;
+        _no = __no;
+        _name = __name;
+        _desc = __desc;
+        _cost = __cost;
+    }
+
     protected override void Initialize()
     {
         _category = 4;
         _no = 0;
-        _furNo = 0;
         _pos.Set(0, 0, 0);
         _usage = false;
     }
