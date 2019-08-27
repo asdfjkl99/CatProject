@@ -11,6 +11,7 @@ TagManager:
   - ITEMLISTUI
   - ITEMDESCUI
   - MainUIMgr
+  - SETTING
   layers:
   - Default
   - TransparentFX

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,6 +10,10 @@ public class UIManager : MonoBehaviour
     public GameObject setRoomBtn;
     public GameObject inventoryBtn;
     public GameObject backBtn;
+
+    public GameObject settingBtn;
+    public GameObject missionBtn;
+    private int settingClickCount = 0;
 
     public int setcamera = 0;
     private int originalcamera = 0;
@@ -52,6 +56,24 @@ public class UIManager : MonoBehaviour
             backBtn.SetActive(false);
             clickCount = 0;
         }
+    }
+
+    public void SetActiveSettingTrue()
+    {
+        settingBtn.SetActive(true);
+        missionBtn.SetActive(true);
+        settingClickCount++;
+    }
+
+    public void SetActiveSettingFalse()
+    {
+        if (settingClickCount == 2)
+        {
+            settingBtn.SetActive(false);
+            missionBtn.SetActive(false);
+            settingClickCount = 0;
+        }
+       
     }
 
 
