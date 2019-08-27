@@ -93,8 +93,8 @@ public class GPSMgrCls : MonoBehaviour
         // This Location is Jochiwon Station
         if (!Input.location.isEnabledByUser)
         {
-            __pos.x = 36.601106f;
-            __pos.y = 127.296565f;
+            __pos.x = 36.601281f;
+            __pos.y = 127.298111f;
         }
 
         return __pos;

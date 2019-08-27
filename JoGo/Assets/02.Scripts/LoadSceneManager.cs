@@ -27,6 +27,7 @@ public class LoadSceneManager : MonoBehaviour
     {
         setCamera = 1;
         GameObject.Find("MyRoomMgr").GetComponent<MyRoomMgrCtrl>().setcamera = setCamera;
+        GameObject.Find("UIManager").GetComponent<UIManager>().setcamera = setCamera;
         mainMgr.SetActive(false);
     }
 
@@ -44,11 +45,7 @@ public class LoadSceneManager : MonoBehaviour
     {
         setCamera = 0;
         GameObject.Find("MyRoomMgr").GetComponent<MyRoomMgrCtrl>().setcamera = setCamera;
+        GameObject.Find("UIManager").GetComponent<UIManager>().setcamera = setCamera;
         mainMgr.SetActive(true);
-    }
-
-    private void Update()
-    {
-       
     }
 }

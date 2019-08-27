@@ -359,7 +359,16 @@ namespace Mapbox.Unity.Map
 			{
 				OnUpdated();
 			}
-		}
+
+            Vector3 __temp;
+
+            __temp.x = (float)latLon.y;
+            __temp.y = 0.0f;
+            __temp.z = (float)latLon.x;
+
+            EventMgrCls._instance.MoveEventsOnUpdateMap(__temp);
+
+        }
 
 		/// <summary>
 		/// Resets the map.
@@ -989,26 +998,31 @@ namespace Mapbox.Unity.Map
         #endregion
 
         private Vector2d _oldGPSPos;
-        private WaitForSeconds waitSec = new WaitForSeconds(3.0f);
+        private WaitForSeconds waitSec = new WaitForSeconds(10.0f);
 
         IEnumerator CheckUpdateMap()
         {
             Vector2 __pos;
             Vector2d __posD;
 
+            yield return new WaitForSeconds(0.1f);
+
             while (true)
             {
-                yield return waitSec;
-
                 __pos = GPSMgrCls._instance.GetGPSData();
 
                 __posD.x = (double)__pos.x;
                 __posD.y = (double)__pos.y;
 
                 if(_oldGPSPos != __posD)
+                {
                     UpdateMap(__posD, Zoom);
+                    Debug.Log("Update Map");
+                }
 
                 _oldGPSPos = __posD;
+
+                yield return waitSec;
             }
         }
 	}

@@ -5,37 +5,48 @@ using UnityEngine;
 
 public class MyRoomMgrCtrl : MonoBehaviour
 {
-    string currentScene;
-    bool isMain = true;
-
-    // 버튼 누를시 변수 넣을 곳
     private GameObject myRoomUI;
     private GameObject mainCamera;
     private GameObject myroomCamera;
 
+    // 현재 상태를 받기 위한 변수
+    private string currentScene;
+
+    // 현재 씬 받아오기 0은 메인, 1은 마이룸
     public int setcamera = 0;
 
-    //private CatUI catUI;
-    public ObjectCtrl objectCtrl;
+    // 상태 별로 기능을 제어하기 위한 스크립트 배열과 그 길이
+    // 메인 스크립트
+    //고양이 경우 추가
+    // 마이룸 스크립트
+    public ObjectCtrl[] objectCtrl;
+    private int objectctrlLength = 0;
 
-    void Start()
+    private void Start()
     {
         CheckScene();
         myRoomUI = GameObject.Find("MyRoomUI");
         mainCamera = GameObject.Find("MainCamera");
         myroomCamera = GameObject.Find("MyRoomCamera");
-        objectCtrl = FindObjectOfType(typeof(ObjectCtrl)) as ObjectCtrl;
+        objectCtrl = FindObjectsOfType(typeof(ObjectCtrl)) as ObjectCtrl[];
+        objectctrlLength = objectCtrl.GetLength(0);
         //catUI = gameObject.GetComponent<CatUI>();
-        //objectCtrl = gameObject.GetComponent<ObjectCtrl>();
     }
 
-    void Update()
+    private void Update()
     {
+        if (myRoomUI.GetComponent<MyRoomUICtrl>().isInstantiate)
+        {
+            objectCtrl = FindObjectsOfType(typeof(ObjectCtrl)) as ObjectCtrl[];
+            objectctrlLength = objectCtrl.GetLength(0);
+        }
+
         CheckScene();
         ChangeUI();
     }
 
-    void CheckScene()
+    // 상태 가져오기
+    private void CheckScene()
     {
         if (setcamera == 0)
         {
@@ -47,35 +58,44 @@ public class MyRoomMgrCtrl : MonoBehaviour
         }
     }
 
-    // 변수 조건 currentState == "main", "myroom"
-
-    void ChangeUI()
+    // 상태 별로 함수 작동
+    private void ChangeUI()
     {
         if (currentScene == "main")
         {
             MainUI();
         }
-        else if(currentScene == "myroom")
+        else if (currentScene == "myroom")
         {
             MyRoomUI();
         }
     }
 
-    void MainUI()
+    // 메인 상태 기능 활성화, 마이룸 상태 기능 비활성화
+    private void MainUI()
     {
         mainCamera.SetActive(true);
         myroomCamera.SetActive(false);
         myRoomUI.SetActive(false);
-       // catUI.enabled = true;
-     //objectCtrl.enabled = false;
+        // catUI.enabled = true;
+
+        for (int i = 0; i < objectctrlLength; i++)
+        {
+            objectCtrl[i].isMyRoom = false;
+        }
     }
 
-    void MyRoomUI()
+    // 메인 상태 기능 비활성화, 마이룸 상태 기능 활성화
+    private void MyRoomUI()
     {
         myroomCamera.SetActive(true);
         mainCamera.SetActive(false);
         myRoomUI.SetActive(true);
         //catUI.enabled = false;
-       // objectCtrl.enabled = true;
+
+        for (int i = 0; i < objectctrlLength; i++)
+        {
+            objectCtrl[i].isMyRoom = true;
+        }
     }
 }

@@ -7,6 +7,10 @@ TagManager:
   - Furniture
   - Cat
   - Tile
+  - EVENT
+  - ITEMLISTUI
+  - ITEMDESCUI
+  - MainUIMgr
   layers:
   - Default
   - TransparentFX

@@ -8,8 +8,9 @@ public class CatClickCls : MonoBehaviour
     private GameObject catIta;
     private GameObject itemListUI;
     private GameObject itemDescUI;
+    private GameObject catInfoUI;
     private Transform target;
-    private int catUICount;
+    public int catUICount;
 
     void CatUIOnOff()
     {
@@ -26,11 +27,13 @@ public class CatClickCls : MonoBehaviour
     {
         Ray ray = camera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
+        Debug.Log("Shoot the Ray");
         if (Physics.Raycast(ray, out hit))
         {
+            Debug.Log("Shoot the Ray2");
             // the object identified by hit.transform was clicked
             // do whatever you want
-            if (hit.collider.tag == "CAT")
+            if (hit.collider.tag == "Cat")
             {
                 Debug.Log("maw?");
 
@@ -49,10 +52,12 @@ public class CatClickCls : MonoBehaviour
         catIta = GameObject.Find("CatIta");
         itemListUI = GameObject.Find("ItemUI");
         itemDescUI = GameObject.Find("ItemDescUI") ;
+        catInfoUI = GameObject.Find("CatInfoUI");
 
         catUICount = 0;
         itemListUI.SetActive(false);
         itemDescUI.SetActive(false);
+        catInfoUI.SetActive(false);
         
     }
 
@@ -66,7 +71,7 @@ public class CatClickCls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) CatClick(); 
+        if (Input.GetMouseButtonDown(0)) CatClick();
 
         CatUIOnOff();
     }

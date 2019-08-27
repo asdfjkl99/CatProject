@@ -110,7 +110,7 @@ public class PlayerCtrlCls : MonoBehaviour
             {
                 Vector2 __newTouchPos = Input.GetTouch(0).position;
 
-                if (_oldTouchPos.x + __newTouchPos.x + _oldTouchPos.y + __newTouchPos.y < 0) // Rotation direction 
+                if (Input.GetAxis("Mouse X") + Input.GetAxis("Mouse Y") < 0) // Rotation direction 
                     __dist *= -1.0f;
 
                 __dist = Vector2.Distance(_oldTouchPos, __newTouchPos); // Calculate distance between old position and new position
