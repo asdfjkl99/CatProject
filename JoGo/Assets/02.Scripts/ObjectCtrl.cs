@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -129,6 +129,9 @@ public class ObjectCtrl : MonoBehaviour
     // 타일 색 업데이트
     private void SetTileColor()
     {
+        if (transform.position.y > objectPos.y)
+            tileColor = 2;
+
         if (tileColor == 0)
             tile.GetComponentInChildren<MeshRenderer>().material.color = Color.green;
         else if (tileColor == 1)
