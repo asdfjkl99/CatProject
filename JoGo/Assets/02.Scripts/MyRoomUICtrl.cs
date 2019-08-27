@@ -38,7 +38,7 @@ public class MyRoomUICtrl : MonoBehaviour
         removebutton.SetActive(false);
         flist.SetActive(false);
 
-        Vector3 removebtnadd = new Vector3(46.42f, 46.82f, 0.0f);
+        Vector3 removebtnadd = new Vector3(130.42f, 70.82f, 0.0f);
         add = removebtnadd;
     }
 
