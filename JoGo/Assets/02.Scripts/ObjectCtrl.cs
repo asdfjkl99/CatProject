@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -68,7 +68,7 @@ public class ObjectCtrl : MonoBehaviour
             isCat = true;
 
         changePos = new Vector3(0.0f, 7.0f, 0.0f);
-        add = new Vector3(1.8f, 4.39f, -2.2f);
+        add = new Vector3(-0.89f, -1.23f, 0.0f);
     }
 
     private void Update()
@@ -129,6 +129,9 @@ public class ObjectCtrl : MonoBehaviour
     // 타일 색 업데이트
     private void SetTileColor()
     {
+        if (transform.position.y > objectPos.y)
+            tileColor = 2;
+
         if (tileColor == 0)
             tile.GetComponentInChildren<MeshRenderer>().material.color = Color.green;
         else if (tileColor == 1)
@@ -270,7 +273,7 @@ public class ObjectCtrl : MonoBehaviour
 
         // 가구만 가구삭제 버튼을 나오게 하기위한 조건문
         if (transform.tag == "Furniture")
-            selectCircle.transform.position = transform.position + add;
+            selectCircle.transform.position = Camera.main.WorldToScreenPoint(transform.position) + add;
 
         // 레이캐스트로 타겟 받아옴
         RaycastHit hitInfo;

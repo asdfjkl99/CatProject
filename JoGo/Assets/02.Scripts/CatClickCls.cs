@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +11,8 @@ public class CatClickCls : MonoBehaviour
     private GameObject catInfoUI;
     private Transform target;
     public int catUICount;
+
+    public int setcamera = 0;
 
     void CatUIOnOff()
     {
@@ -71,8 +73,18 @@ public class CatClickCls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) CatClick();
+        if (setcamera == 0)
+        {
+            if (Input.GetMouseButtonDown(0)) CatClick();
 
-        CatUIOnOff();
+            CatUIOnOff();
+        }
+        else
+        {
+            if (catUICount % 2 != 0)
+                catUICount++;
+
+            CatUIOnOff();
+        }
     }
 }

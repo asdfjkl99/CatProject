@@ -27,10 +27,10 @@ public class MyRoomUICtrl : MonoBehaviour
         FList = GameObject.Find("FList");
         RemoveButton.SetActive(false);
         FList.SetActive(false);
-        selectcircle = GameObject.Find("SelectCircle");
+        selectcircle = GameObject.Find("MyRoomUI").transform.Find("SelectCircle").gameObject;
         Models = GameObject.Find("Models");
 
-        Vector3 removebtnadd = new Vector3(2.5f, 45.0f, 0.0f);
+        Vector3 removebtnadd = new Vector3(18.9f, 24.3f, 0.0f);
         add = removebtnadd;
     }
 
@@ -42,11 +42,7 @@ public class MyRoomUICtrl : MonoBehaviour
     // 가구 제거 버튼 위치 설정, 활성화 여부 설정
     void UpdateRemoveButton()
     {
-        Vector3 screenPos = Camera.main.WorldToScreenPoint(selectcircle.transform.position);
-
-        float x = screenPos.x;
-
-        RemoveButton.transform.position = new Vector3(x, screenPos.y, RemoveButton.transform.position.z) + add;
+        RemoveButton.transform.position = new Vector3(selectcircle.transform.position.x, selectcircle.transform.position.y, RemoveButton.transform.position.z) + add;
 
         if (selectcircle.activeSelf == true)
             RemoveButton.SetActive(true);
