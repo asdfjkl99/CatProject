@@ -16,11 +16,9 @@ public class MyRoomMgrCtrl : MonoBehaviour
     public int setcamera = 0;
 
     // 상태 별로 기능을 제어하기 위한 스크립트 배열과 그 길이
-    // 메인 스크립트
-    //고양이 경우 추가
     // 마이룸 스크립트
-    public ObjectCtrl[] objectCtrl;
-    private int objectctrlLength = 0;
+    public ObjectCtrl[] objectCtrls;
+    public int objectctrlsLength = 0;
 
     private void Start()
     {
@@ -28,8 +26,8 @@ public class MyRoomMgrCtrl : MonoBehaviour
         myRoomUI = GameObject.Find("MyRoomUI");
         mainCamera = GameObject.Find("MainCamera");
         myroomCamera = GameObject.Find("MyRoomCamera");
-        objectCtrl = FindObjectsOfType(typeof(ObjectCtrl)) as ObjectCtrl[];
-        objectctrlLength = objectCtrl.GetLength(0);
+        objectCtrls = FindObjectsOfType(typeof(ObjectCtrl)) as ObjectCtrl[];
+        objectctrlsLength = objectCtrls.GetLength(0);
         //catUI = gameObject.GetComponent<CatUI>();
     }
 
@@ -37,8 +35,8 @@ public class MyRoomMgrCtrl : MonoBehaviour
     {
         if (myRoomUI.GetComponent<MyRoomUICtrl>().isInstantiate)
         {
-            objectCtrl = FindObjectsOfType(typeof(ObjectCtrl)) as ObjectCtrl[];
-            objectctrlLength = objectCtrl.GetLength(0);
+            objectCtrls = FindObjectsOfType(typeof(ObjectCtrl)) as ObjectCtrl[];
+            objectctrlsLength = objectCtrls.GetLength(0);
         }
 
         CheckScene();
@@ -76,12 +74,10 @@ public class MyRoomMgrCtrl : MonoBehaviour
     {
         mainCamera.SetActive(true);
         myroomCamera.SetActive(false);
-        myRoomUI.SetActive(false);
-        // catUI.enabled = true;
 
-        for (int i = 0; i < objectctrlLength; i++)
+        for (int i = 0; i < objectctrlsLength; i++)
         {
-            objectCtrl[i].isMyRoom = false;
+            objectCtrls[i].isMyRoom = false;
         }
     }
 
@@ -90,12 +86,10 @@ public class MyRoomMgrCtrl : MonoBehaviour
     {
         myroomCamera.SetActive(true);
         mainCamera.SetActive(false);
-        myRoomUI.SetActive(true);
-        //catUI.enabled = false;
 
-        for (int i = 0; i < objectctrlLength; i++)
+        for (int i = 0; i < objectctrlsLength; i++)
         {
-            objectCtrl[i].isMyRoom = true;
+            objectCtrls[i].isMyRoom = true;
         }
     }
 }
