@@ -27,15 +27,15 @@ public class ObjectCtrl : MonoBehaviour
     // 현재 고양이가 가구위에 위치 여부
     private bool isCatUp = false;
     // 오브젝트의 처음 위치
-    private Vector3 objectPos;
+    public Vector3 objectPos;
     // 가구 위에 고양이 위치 여부를 위한 변수
-    private bool catIsOn = false;
+    public bool catIsOn = false;
     // 가구 위에 고양이 위치 
-    private Vector3 CatOnMePos;
+    public Vector3 CatOnMePos;
     // 가구 위의 고양이 오브젝트
-    private GameObject CatOnMe = null;
+    public GameObject CatOnMe = null;
     // 가구 위의 고양이의 움직임 이후 값
-    private Vector3 afterPosition;
+    public Vector3 afterPosition;
     // 충돌 오브젝트
     public GameObject myColl = null;
     // 충돌 오브젝트가 가구인지 여부
@@ -233,7 +233,7 @@ public class ObjectCtrl : MonoBehaviour
         colliderPos = coll.transform.position;
 
         // 현재 레이캐스트가 고양이고 가구와 부딪힌 경우
-        if (currentTarget != null)
+        if (currentTarget != null && myColl == coll.gameObject)
             if (currentTarget.tag == "Cat" && collIsFurniture)
             {
                 if (myColl != null && myColl.GetComponent<ObjectCtrl>())
