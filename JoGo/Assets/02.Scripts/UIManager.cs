@@ -11,9 +11,14 @@ public class UIManager : MonoBehaviour
     public GameObject inventoryBtn;
     public GameObject backBtn;
 
+    public GameObject moreFuncEnterBtn;
     public GameObject settingBtn;
     public GameObject missionBtn;
-    private int settingClickCount = 0;
+    private int moreFuncClickCount = 0;
+    private int moreFuncEnterCount = 0;
+
+    //Setting팝업창
+    public GameObject SettingPopUp;
 
     public int setcamera = 0;
     private int originalcamera = 0;
@@ -30,8 +35,20 @@ public class UIManager : MonoBehaviour
         if (originalcamera != setcamera)
         {
             clickCount = 2;
+            moreFuncClickCount = 2;
+            SetActiveMoreFuncFalse();
             SetActiveFalse();
+            moreFuncEnterBtn.SetActive(false);
+
+
         }
+
+        if (originalcamera == setcamera)
+        {
+            moreFuncEnterBtn.SetActive(true);
+        }
+               
+         
     }
 
     public void SetActiveTrue()
@@ -58,22 +75,33 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void SetActiveSettingTrue()
+    public void SetActiveMoreFuncTrue()
     {
         settingBtn.SetActive(true);
         missionBtn.SetActive(true);
-        settingClickCount++;
+        moreFuncClickCount++;
     }
 
-    public void SetActiveSettingFalse()
+    public void SetActiveMoreFuncFalse()
     {
-        if (settingClickCount == 2)
+        if (moreFuncClickCount == 2)
         {
             settingBtn.SetActive(false);
             missionBtn.SetActive(false);
-            settingClickCount = 0;
+            moreFuncClickCount = 0;
         }
-       
+    }
+
+    //Setting 팝업창 활성화
+    public void SetActiveSettingPopUpTrue()
+    {
+        SettingPopUp.SetActive(true);
+    }
+
+    //Setting 팝업창 비활성화
+    public void SetActiveSettingPopUpFalse()
+    {
+        SettingPopUp.SetActive(false);
     }
 
 
