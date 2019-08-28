@@ -10602,6 +10602,62 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1226780905}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1234389229
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1234389232}
+  - component: {fileID: 1234389231}
+  - component: {fileID: 1234389230}
+  m_Layer: 0
+  m_Name: Data
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1234389230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234389229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22fa749ae53eec143aacb8a0b28d37fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1234389231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234389229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cef16f810ee37c4f878a55afcc2954c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1234389232
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234389229}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1245992166
 GameObject:
   m_ObjectHideFlags: 0
@@ -17172,9 +17228,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56b2dd1c8163c0f41a5b7de1da255ae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stamps: {fileID: 367411894}
-  quiz: {fileID: 115427965}
-  festival: {fileID: 1835329406}
+  stamps: {fileID: 0}
+  quiz: {fileID: 0}
+  festival: {fileID: 0}
 --- !u!224 &2052505480 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6034176052404653699, guid: 85882d45efdb13e4ea87853971548f7b,

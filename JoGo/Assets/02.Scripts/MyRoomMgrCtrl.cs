@@ -20,15 +20,23 @@ public class MyRoomMgrCtrl : MonoBehaviour
     public ObjectCtrl[] objectCtrls;
     public int objectctrlsLength = 0;
 
+    // 싱글톤
+    public static MyRoomMgrCtrl _instance = null;
+
+    private void Awake()
+    {
+        if (_instance == null)
+            _instance = this;
+        else
+            Destroy(this.gameObject);
+
+        // 로드일때 안 사라짐
+        //DontDestroyOnLoad(this.gameObject);
+    }
+
     private void Start()
     {
-        CheckScene();
-        myRoomUI = GameObject.Find("MyRoomUI");
-        mainCamera = GameObject.Find("MainCamera");
-        myroomCamera = GameObject.Find("MyRoomCamera");
-        objectCtrls = FindObjectsOfType(typeof(ObjectCtrl)) as ObjectCtrl[];
-        objectctrlsLength = objectCtrls.GetLength(0);
-        //catUI = gameObject.GetComponent<CatUI>();
+        Initialize();
     }
 
     private void Update()
@@ -41,6 +49,16 @@ public class MyRoomMgrCtrl : MonoBehaviour
 
         CheckScene();
         ChangeUI();
+    }
+
+    private void Initialize()
+    {
+        CheckScene();
+        myRoomUI = GameObject.Find("MyRoomUI");
+        mainCamera = GameObject.Find("MainCamera");
+        myroomCamera = GameObject.Find("MyRoomCamera");
+        objectCtrls = FindObjectsOfType(typeof(ObjectCtrl)) as ObjectCtrl[];
+        objectctrlsLength = objectCtrls.GetLength(0);
     }
 
     // 상태 가져오기

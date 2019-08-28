@@ -26,7 +26,32 @@ public class MyRoomUICtrl : MonoBehaviour
 
     public int setcamera = 0;
 
+    // 싱글톤
+    public static MyRoomUICtrl _instance = null;
+
+    private void Awake()
+    {
+        if (_instance == null)
+            _instance = this;
+        else
+            Destroy(this.gameObject);
+
+        // 로드일때 안 사라짐
+        //DontDestroyOnLoad(this.gameObject);
+    }
+
     private void Start()
+    {
+        Initialize();
+    }
+
+    private void Update()
+    {
+        CheckCameraNum();
+        UpdateRemoveButton();
+    }
+
+    private void Initialize()
     {
         buttonsection = GameObject.Find("ButtonSection");
         removebutton = GameObject.Find("RemoveButton");
@@ -42,23 +67,18 @@ public class MyRoomUICtrl : MonoBehaviour
         add = removebtnadd;
     }
 
-    private void Update()
-    {
-        CheckCameraNum();
-        UpdateRemoveButton();
-    }
-
     // 카메라 번호로 버튼 온오프
     void CheckCameraNum()
     {
-        if(setcamera == 0)
+        if (setcamera == 0)
         {
             buttonsection.SetActive(false);
             flist.SetActive(false);
             saveimage.SetActive(false);
             savecomplete.SetActive(false);
+            selectcircle.SetActive(false);
         }
-        else if(setcamera == 1)
+        else if (setcamera == 1)
         {
             buttonsection.SetActive(true);
         }
@@ -78,18 +98,25 @@ public class MyRoomUICtrl : MonoBehaviour
     // 가구 추가 버튼 클릭
     public void OnTouchAddFButton()
     {
-        if (!saveimage.activeSelf)
-            if (!flist.activeSelf)
-                flist.SetActive(true);
-            else
-                flist.SetActive(false);
+        if (saveimage.activeSelf || savecomplete.activeSelf)
+            return;
+
+        if (!flist.activeSelf)
+            flist.SetActive(true);
+        else
+            flist.SetActive(false);
     }
 
     // 가구 저장 버튼 클릭
     public void OnTouchSaveButton()
     {
-        flist.SetActive(false);
-        saveimage.SetActive(true);
+        if (!savecomplete.activeSelf)
+        {
+            selectcircle.SetActive(false);
+            removebutton.SetActive(false);
+            flist.SetActive(false);
+            saveimage.SetActive(true);
+        }
     }
 
     // 가구 제거 버튼 클릭
@@ -132,7 +159,7 @@ public class MyRoomUICtrl : MonoBehaviour
         savecomplete.SetActive(false);
     }
 
-    // 가구 클릭시 마우스 위치에 생성
+    // 가구 클릭시 특정 위치에 생성
     public void OnTouchF1()
     {
         GameObject instance = Instantiate(Sofa2, Sofa2.transform.position, Sofa2.transform.rotation);
