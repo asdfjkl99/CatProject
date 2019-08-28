@@ -18,7 +18,10 @@ public class UIManager : MonoBehaviour
     private int moreFuncEnterCount = 0;
 
     //Setting팝업창
-    public GameObject SettingPopUp;
+    public GameObject settingPopUp;
+
+    //Mission팝업창
+    public GameObject missionPopUp;
 
     public int setcamera = 0;
     private int originalcamera = 0;
@@ -95,14 +98,25 @@ public class UIManager : MonoBehaviour
     //Setting 팝업창 활성화
     public void SetActiveSettingPopUpTrue()
     {
-        SettingPopUp.SetActive(true);
+        settingPopUp.SetActive(true);
     }
 
     //Setting 팝업창 비활성화
     public void SetActiveSettingPopUpFalse()
     {
-        SettingPopUp.SetActive(false);
+        settingPopUp.SetActive(false);
     }
 
+    //Mission 팝업창 활성화
+    public void SetActiveMissionPopUpTrue()
+    {
+        missionPopUp.SetActive(true);
+    }
+
+    //Mission 팝업창 비활성화
+    public void SetActiveMissionPopUpFalse()
+    {
+        missionPopUp.SetActive(false);
+    }
 
 }
