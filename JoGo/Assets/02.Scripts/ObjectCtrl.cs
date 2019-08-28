@@ -53,22 +53,12 @@ public class ObjectCtrl : MonoBehaviour
     // 가구 선택 ui 위치 설정을 위한 변수
     public Vector3 add;
 
+    private GameObject saveimage;
+    private GameObject savecomplete;
+
     private void Start()
     {
-        tile = transform.Find("Tile").gameObject;
-        tile.GetComponentInChildren<MeshRenderer>().material.shader = Shader.Find("Legacy Shaders/Transparent/Diffuse");
-        myroomUICtrl = GameObject.Find("MyRoomUI").GetComponent<MyRoomUICtrl>();
-        FindSelectCircle();
-
-        // y값을 비교하여 고양이가 가구 위에 있는 여부를 알아내기 위한 초기값 설정
-        objectPos = transform.position;
-
-        // 자신이 고양이인지 알아냄
-        if (transform.tag == "Cat")
-            isCat = true;
-
-        changePos = new Vector3(0.0f, 7.0f, 0.0f);
-        add = new Vector3(-0.89f, -1.23f, 0.0f);
+        Initialize();
     }
 
     private void Update()
@@ -85,6 +75,26 @@ public class ObjectCtrl : MonoBehaviour
         CheckCatOnMe();
 
         ShowCurrentPosition();
+    }
+
+    private void Initialize()
+    {
+        tile = transform.Find("Tile").gameObject;
+        tile.GetComponentInChildren<MeshRenderer>().material.shader = Shader.Find("Legacy Shaders/Transparent/Diffuse");
+        myroomUICtrl = GameObject.Find("MyRoomUI").GetComponent<MyRoomUICtrl>();
+        saveimage = GameObject.Find("MyRoomUI").transform.Find("ButtonSection").transform.Find("SaveButton").transform.Find("SaveImage").gameObject;
+        savecomplete = GameObject.Find("MyRoomUI").transform.Find("ButtonSection").transform.Find("SaveButton").transform.Find("SaveComplete").gameObject;
+        FindSelectCircle();
+
+        // y값을 비교하여 고양이가 가구 위에 있는 여부를 알아내기 위한 초기값 설정
+        objectPos = transform.position;
+
+        // 자신이 고양이인지 알아냄
+        if (transform.tag == "Cat")
+            isCat = true;
+
+        changePos = new Vector3(0.0f, 7.0f, 0.0f);
+        add = new Vector3(-0.89f, -1.23f, 0.0f);
     }
 
     // 가구 선택 UI 연결
@@ -262,7 +272,7 @@ public class ObjectCtrl : MonoBehaviour
     //마우스 클릭
     private void OnMouseDown()
     {
-        if (!CheckIsMyRoom() || catIsOn)
+        if (!CheckIsMyRoom() || catIsOn || saveimage.activeSelf || savecomplete.activeSelf)
             return;
 
         // 이동 실패시 원래 위치로 돌아오게 하기 위한 변수 값 삽입
@@ -294,7 +304,7 @@ public class ObjectCtrl : MonoBehaviour
     //마우스 드래그
     private void OnMouseDrag()
     {
-        if (!CheckIsMyRoom() || catIsOn)
+        if (!CheckIsMyRoom() || catIsOn || saveimage.activeSelf || savecomplete.activeSelf)
             return;
 
         if (isCat)
@@ -320,7 +330,7 @@ public class ObjectCtrl : MonoBehaviour
     // 마우스 뗌
     private void OnMouseUp()
     {
-        if (!CheckIsMyRoom() || catIsOn)
+        if (!CheckIsMyRoom() || catIsOn || saveimage.activeSelf || savecomplete.activeSelf)
             return;
 
         if (isCat)
